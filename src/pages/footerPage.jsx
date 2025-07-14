@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import footericon from '../assets/img/footericon.png';
-
 const Footer = () => {
+
+  const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
+  
+    const handleHomeClick = () => {
+      if (location.pathname === "/") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        navigate("/");
+      }
+      setIsOpen(false);
+    };
+  
   return (
     <footer id="footer" className="footer dark-background">
       <div className="container-foot footer-top">
         <div className="row-footer gy-4">
 
           {/* Footer Contact */}
-          <div className="footer-about col-lg-4 col-md-6 col-sm-8">
+          
             <div className="footer-contact">
               <div>
                 <img src={footericon} className="footer-img" alt="Omar ElMishad Company footer logo" />
@@ -17,22 +31,22 @@ const Footer = () => {
               <p><i className="bi bi-whatsapp" />: +44 7477 140271</p>
               <p>331-008-793: رقم التسجيل الضريبى</p>
             </div>
-          </div>
+          
 
           {/* Useful Links */}
-          <div className="col-lg-2 col-md-3 footer-links">
+          <div className="useful-links col-lg-2 col-md-3 ">
             <h3>Useful Links</h3>
             <ul>
-              <li><i className="bi bi-chevron-right" /> <a href="/">Home</a></li>
-              <li><i className="bi bi-chevron-right" /> <a href="/about">About Us</a></li>
-              <li><i className="bi bi-chevron-right" /> <a href="/portfolio">Portfolio</a></li>
-              <li><i className="bi bi-chevron-right" /> <a href="#">Terms of Service</a></li>
-              <li><i className="bi bi-chevron-right" /> <a href="#">Privacy Policy</a></li>
+              <li><i className="bi bi-chevron-right" /> <Link to="/" onClick={handleHomeClick} style={{ cursor: "pointer" }}>Home</Link></li>
+              <li><i className="bi bi-chevron-right" /> <Link to="/about">About Us</Link></li>
+              <li><i className="bi bi-chevron-right" /> <Link to="/portfolio">Portfolio</Link></li>
+              <li><i className="bi bi-chevron-right" /> <Link to="/terms">Terms of Service</Link></li>
+              <li><i className="bi bi-chevron-right" /> <Link to="/privacy">Privacy Policy</Link></li>
             </ul>
           </div>
 
           {/* Our Services */}
-          <div className="col-lg-2 col-md-3 footer-links">
+          <div className="our-services col-lg-2 col-md-3 ">
             <h3>Our Services</h3>
             <ul>
               <li><i className="bi bi-chevron-right" /> Film Production</li>
@@ -45,7 +59,7 @@ const Footer = () => {
           </div>
 
           {/* Team Emails */}
-          <div className="col-lg-2 col-md-3 footer-links">
+          <div className="team-mails col-lg-2 col-md-3 ">
             <h3>Team</h3>
             <ul className="job-emails">
               <li><i className="bi bi-chevron-right" /><a href="mailto:omar-elmishad@omardir.com">Creative Director: <span>omar-elmishad@omardir.com</span></a></li>

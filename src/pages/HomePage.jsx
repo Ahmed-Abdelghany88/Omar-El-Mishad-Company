@@ -1,4 +1,5 @@
-import React from 'react'
+import React,{ useRef } from 'react'
+import FooterPage from './footerPage.jsx';
 import coverImg from "../assets/img/hero-bg.jpeg";
 import coverlogo from "../assets/img/logo.png";
 import serviceImg from "../assets/img/service-all.png";
@@ -10,7 +11,6 @@ import teammember3 from "../assets/img/team-3.jpg";
 import teammember2 from "../assets/img/team-2.jpg";
 import teammember1 from "../assets/img/team-1.jpg";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Helmet } from 'react-helmet-async';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -20,8 +20,49 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 
 const HomePage = () => {
- 
+//   const enterFullscreen = async (el) => {
+//   try {
+//     // Must be inside click / pointer / touch handler!
+//     await el.requestFullscreen();          // Chrome / Edge / Firefox
+//   } catch (err) {
+//     // Safari & fallback
+//     if (err?.name === 'TypeError') {
+//       // iOS <16 or a blocked call
+//       simulateIOSFullscreen(el);
+//     } else {
+//       console.warn('Fullscreen failed:', err);
+//     }
+//   }
+// };
 
+ const isIOS = () =>
+  /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+
+// const simulateIOSFullscreen = (el) => {
+//   el.classList.toggle('ios-fullscreen');
+//   document.body.classList.toggle('no-scroll');
+// };
+
+
+// For both Services Photo and swiper Full screen mode //
+const imgRef = useRef(null);
+
+
+const swiperRef = useRef(null);
+const toggleFS = (el) => {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+    document.body.style.overflow = '';
+  } else if (el.requestFullscreen) {
+    el.requestFullscreen();
+  } else if (isIOS()) {
+    // iOS fallback
+    el.classList.toggle('ios-fullscreen');
+    const locked = el.classList.contains('ios-fullscreen');
+    document.body.style.overflow = locked ? 'hidden' : '';
+  }
+};
   return (
     <div>
 
@@ -32,7 +73,7 @@ const HomePage = () => {
 <div  className="uppercontainer d-flex align-items-center">
   <div style={{position: 'relative'}} className="coverlogo">
     <img className='coverlogoimg' src={coverlogo} alt='Omar El-Mishad Company logo' /></div>
-  <div className="container d-flex flex-column align-items-left">
+  <div className="textcontainer d-flex flex-column align-items-left">
     <h2>Omar El-Mishad Company</h2>
     <p>Where Constraints Fuel Creativity</p>
    
@@ -62,21 +103,13 @@ powered video production.</li>
            </div>
   
       <div className="sub-container2">
-          {/* <div>
-          <h3>
-             Video Title
-          </h3>
-           <p>
-             Video Discreption
-          </p>
-          </div> */}
           <div className="container2-video">
             <div style={{padding:'56.25% 0 0 0',position:'relative',width:'100%',height:'100%'}}><iframe
   src="https://player.vimeo.com/video/1076189894?h=e1c282d7d6&title=0"
   style={{position:'absolute',top:'0',left:'0',width:'100%',height:'100%'}}
   frameBorder="0"
   allow="autoplay; fullscreen; picture-in-picture"
-  allowFullScreen
+  allowFullScreen title='about section video'
 ></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 
           </div>
@@ -84,49 +117,58 @@ powered video production.</li>
   </div>
 </section>{/* /About Section */}
 
-{/* vararity photos Section */}
-<section id="photos" className="photos section">
-  <div className='photos-container'>
-      <h3 className='title-photosection'>
-        Elevating	Brands	with	Creative	Excellence
-      </h3>
-      <img src={serviceImg} className="img-ser-all " alt='Creative services showcase by Omar El-Mishad' />
-  </div>
-</section>
+{/* photos Section */}
+  <section id="photos" className="photos section">
+        <div className='photos-container'>
+          <h3 className='title-photosection'>
+            Elevating Brands with Creative Excellence
+          </h3>
+<img
+  ref={imgRef}
+  src={serviceImg}
+  className="img-ser-all"
+  alt="Creative services showcase"
+  style={{ cursor: 'pointer' }}
+  title="Tap to toggle fullscreen"
+   onPointerUp={() => toggleFS(imgRef.current)}
+  // onClick={() => toggleFS(imgRef.current)}  
+  // onTouchEnd={() => toggleFS(imgRef.current)}
+/>
+        </div>
+      </section>
 
 {/* Swiper Section */}
-<section id="swiper" className="swiper-section">
- <div className='swiper-container'>
+ <section id="swiper" className="swiper-section">
+      <div className="fullscreen-swiper-container" ref={swiperRef}>
+
   <Swiper
-  modules={[Navigation, Pagination, Autoplay]}
-      spaceBetween={50}
-      slidesPerView={1}
-      loop={true}
-      Navigation
-      pagination={{ clickable: true }}
-      // scrollbar={{ draggable: true }}
-      autoplay={{delay:5000}}
-      // onSlideChange={() => console.log('slide change')}
-      // onSwiper={(swiper) => console.log(swiper)}
-    >
-      <SwiperSlide>
-        <div>
-          <img src={working1} className='swiper-img1' alt='Omar El-Mishad team belief - creative freedom'/>
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div>
-          <img src={working2} className='swiper-img2'alt='Omar El-Mishad company vision - storytelling power'/>
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div>
-          <img src={working3} className='swiper-img3'alt='Omar El-Mishad company mission - delivering innovation'/>
-        </div>
-      </SwiperSlide>
-    </Swiper>
-  </div> 
-</section>
+    modules={[Navigation, Pagination, Autoplay]}
+    spaceBetween={50}
+    slidesPerView={1}
+    navigation
+    loop={true}
+    pagination={{ clickable: true }}
+    autoplay={{ delay: 5000 }}
+  >
+          <SwiperSlide><img src={working1} alt="Slide 1" className="swiper-img1" style={{ cursor: 'pointer' }}
+  onPointerUp={() => toggleFS(swiperRef.current)}
+// onClick={()     => toggleFS(swiperRef.current)}
+// onTouchEnd={()  => toggleFS(swiperRef.current)}
+/></SwiperSlide>
+          <SwiperSlide><img src={working2} alt="Slide 2" className="swiper-img2" style={{ cursor: 'pointer' }}
+       onPointerUp={() => toggleFS(swiperRef.current)}
+// onClick={()     => toggleFS(swiperRef.current)}
+// onTouchEnd={()  => toggleFS(swiperRef.current)}
+/>
+</SwiperSlide>
+          <SwiperSlide><img src={working3} alt="Slide 3" className="swiper-img3" style={{ cursor: 'pointer' }}
+       onPointerUp={() => toggleFS(swiperRef.current)}
+// onClick={()     => toggleFS(swiperRef.current)}
+// onTouchEnd={()  => toggleFS(swiperRef.current)}
+ /></SwiperSlide>
+        </Swiper>
+      </div>
+    </section>
 
 {/* Team Section */}
 <section id="team" className="team section light-background">
@@ -166,7 +208,7 @@ powered video production.</li>
         <div className="member">
           <div className="pic"><img src={teammember3} className="img-fluid" alt='Lamiaa Idriss - Account Manager' /></div>
           <div className="member-info">
-            <h4>Lamiaa Idriss</h4>
+            <h4>Lamia Idriss</h4>
             <span>Account Manager</span>
             
           </div>
@@ -176,9 +218,10 @@ powered video production.</li>
   </div>
 </section>{/* /Team Section */}
 
-
+<FooterPage />
     </div>
+
   )
 }
 
-export default HomePage
+export default HomePage;

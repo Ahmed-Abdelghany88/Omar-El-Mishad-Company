@@ -8,10 +8,11 @@ import './assets/vendor/swiper/swiper-bundle.min.css';
 import Navbar from './pages/Navbar.jsx';
 import HomePage from './pages/HomePage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
-import FooterPage from './pages/footerPage.jsx';
 import PortfolioPage from './pages/portfolioPage.jsx';
 import { Route, Routes } from 'react-router';
 import { HelmetProvider } from 'react-helmet-async';
+import TermsPage from './pages/TermsPage';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import NotFound from './pages/NotfoundPage.jsx';
 function App() {
   return (
@@ -22,9 +23,10 @@ function App() {
           <Route path='/' element={<HomePage />} />
           <Route path='/about' element={<AboutPage />} />
           <Route path='/portfolio' element={<PortfolioPage />} />
+          <Route path='/terms' element={<TermsPage />} />
+          <Route path='/privacy' element={<PrivacyPolicy />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
-        <FooterPage />
       </HelmetProvider>
     </div>
   );
