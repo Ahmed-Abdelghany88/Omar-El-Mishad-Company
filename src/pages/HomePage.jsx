@@ -1,4 +1,4 @@
-import React,{ useRef } from 'react'
+import React,{ useRef , useEffect, useState } from 'react'
 import FooterPage from './footerPage.jsx';
 import coverImg from "../assets/img/hero-bg.jpeg";
 import coverlogo from "../assets/img/logo.png";
@@ -19,50 +19,97 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 
+
+
+
+
 const HomePage = () => {
-//   const enterFullscreen = async (el) => {
-//   try {
-//     // Must be inside click / pointer / touch handler!
-//     await el.requestFullscreen();          // Chrome / Edge / Firefox
-//   } catch (err) {
-//     // Safari & fallback
-//     if (err?.name === 'TypeError') {
-//       // iOS <16 or a blocked call
-//       simulateIOSFullscreen(el);
-//     } else {
-//       console.warn('Fullscreen failed:', err);
-//     }
-//   }
-// };
 
- const isIOS = () =>
-  /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  const toggleImageFullscreen = () => {
+  const el = imgRef.current;
+  const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
+  if (!el) return;
 
-// const simulateIOSFullscreen = (el) => {
-//   el.classList.toggle('ios-fullscreen');
-//   document.body.classList.toggle('no-scroll');
-// };
-
-
-// For both Services Photo and swiper Full screen mode //
-const imgRef = useRef(null);
-
-
-const swiperRef = useRef(null);
-const toggleFS = (el) => {
   if (document.fullscreenElement) {
     document.exitFullscreen();
     document.body.style.overflow = '';
   } else if (el.requestFullscreen) {
     el.requestFullscreen();
-  } else if (isIOS()) {
-    // iOS fallback
-    el.classList.toggle('ios-fullscreen');
-    const locked = el.classList.contains('ios-fullscreen');
-    document.body.style.overflow = locked ? 'hidden' : '';
+  } else if (iOS) {
+    el.classList.toggle('ios-simulated-fullscreen');
+    const isFS = el.classList.contains('ios-simulated-fullscreen');
+    document.body.style.overflow = isFS ? 'hidden' : '';
   }
 };
+
+const swiperContainerRef = useRef(null);
+  const swiperRef = useRef(null);
+const imgRef = useRef(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const isIOS = () => /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+  const enterFullscreen = () => {
+    const el = swiperContainerRef.current;
+    const swiper = swiperRef.current?.swiper;
+
+    if (!document.fullscreenElement && el) {
+      if (el.requestFullscreen) {
+        el.requestFullscreen();
+      } else if (el.webkitRequestFullscreen) {
+        el.webkitRequestFullscreen();
+      } else if (el.msRequestFullscreen) {
+        el.msRequestFullscreen();
+      } else if (isIOS()) {
+        el.classList.add('ios-simulated-fullscreen');
+        document.body.style.overflow = 'hidden';
+        setIsFullscreen(true);
+        swiper?.autoplay?.stop();
+      }
+    }
+  };
+
+  const exitFullscreen = () => {
+    const swiper = swiperRef.current?.swiper;
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else if (isIOS()) {
+      document.body.style.overflow = '';
+      swiperContainerRef.current?.classList.remove('ios-simulated-fullscreen');
+      setIsFullscreen(false);
+      swiper?.autoplay?.start();
+    }
+  };
+
+  const handleSwiperPointerUp = () => {
+    if (!document.fullscreenElement && !isFullscreen) {
+      enterFullscreen();
+    } else {
+      exitFullscreen();
+    }
+  };
+
+  useEffect(() => {
+    const swiper = swiperRef.current?.swiper;
+    swiper?.autoplay?.start();
+
+    const onFullscreenChange = () => {
+      const isFS = !!document.fullscreenElement;
+      setIsFullscreen(isFS);
+      if (isFS) {
+        swiper?.autoplay?.stop();
+      } else {
+        swiper?.autoplay?.start();
+      }
+    };
+
+    document.addEventListener('fullscreenchange', onFullscreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', onFullscreenChange);
+    };
+  }, []);
+
   return (
     <div>
 
@@ -130,8 +177,8 @@ powered video production.</li>
   alt="Creative services showcase"
   style={{ cursor: 'pointer' }}
   title="Tap to toggle fullscreen"
-   onPointerUp={() => toggleFS(imgRef.current)}
-  // onClick={() => toggleFS(imgRef.current)}  
+   // onPointerUp={() => toggleFS(imgRef.current)}
+   onPointerUp={toggleImageFullscreen}  
   // onTouchEnd={() => toggleFS(imgRef.current)}
 />
         </div>
@@ -139,9 +186,10 @@ powered video production.</li>
 
 {/* Swiper Section */}
  <section id="swiper" className="swiper-section">
-      <div className="fullscreen-swiper-container" ref={swiperRef}>
+      <div className="fullscreen-swiper-container" ref={swiperContainerRef}>
 
   <Swiper
+  ref={swiperRef}
     modules={[Navigation, Pagination, Autoplay]}
     spaceBetween={50}
     slidesPerView={1}
@@ -150,21 +198,26 @@ powered video production.</li>
     pagination={{ clickable: true }}
     autoplay={{ delay: 5000 }}
   >
-          <SwiperSlide><img src={working1} alt="Slide 1" className="swiper-img1" style={{ cursor: 'pointer' }}
-  onPointerUp={() => toggleFS(swiperRef.current)}
-// onClick={()     => toggleFS(swiperRef.current)}
-// onTouchEnd={()  => toggleFS(swiperRef.current)}
+          <SwiperSlide><img src={working1} 
+          alt="Slide 1"
+          className="swiper-img1" 
+          style={{ cursor: 'pointer' }}
+ onPointerUp={handleSwiperPointerUp}
+
 /></SwiperSlide>
-          <SwiperSlide><img src={working2} alt="Slide 2" className="swiper-img2" style={{ cursor: 'pointer' }}
-       onPointerUp={() => toggleFS(swiperRef.current)}
-// onClick={()     => toggleFS(swiperRef.current)}
-// onTouchEnd={()  => toggleFS(swiperRef.current)}
+          <SwiperSlide>
+            <img src={working2} 
+          alt="Slide 2" 
+          className="swiper-img2" 
+          style={{ cursor: 'pointer' }}
+ onPointerUp={handleSwiperPointerUp}
 />
 </SwiperSlide>
-          <SwiperSlide><img src={working3} alt="Slide 3" className="swiper-img3" style={{ cursor: 'pointer' }}
-       onPointerUp={() => toggleFS(swiperRef.current)}
-// onClick={()     => toggleFS(swiperRef.current)}
-// onTouchEnd={()  => toggleFS(swiperRef.current)}
+          <SwiperSlide><img src={working3} 
+          alt="Slide 3" 
+          className="swiper-img3" 
+          style={{ cursor: 'pointer' }}
+onPointerUp={handleSwiperPointerUp}
  /></SwiperSlide>
         </Swiper>
       </div>

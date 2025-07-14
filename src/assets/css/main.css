@@ -2018,7 +2018,28 @@ body.no-scroll {
   }
 }
 
-  
+  .ios-simulated-fullscreen {
+  position: fixed !important;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ios-fullscreen {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: #000;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /*--------------------------------------------------------------
 # Team Section

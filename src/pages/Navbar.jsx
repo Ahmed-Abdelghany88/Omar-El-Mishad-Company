@@ -41,7 +41,7 @@ const Navbar = () => {
         >
           <ul>
             <li>
-              <a onClick={handleHomeClick} style={{ cursor: "pointer" }}>Home</a>
+              <a href='#' onClick={handleHomeClick} style={{ cursor: "pointer" }}>Home</a>
             </li>
             <li><a href="/#about" onClick={() => setIsOpen(false)}>Know Us</a></li>
             <li><Link to="/portfolio" onClick={() => setIsOpen(false)}>Portfolio</Link></li>
