@@ -28,19 +28,34 @@ const simulateIOSFullscreen = (el) => {
 };
 
 const imgRef = useRef(null);
-const toggleFS = (el) => {
-  if (document.fullscreenElement) {
-    document.exitFullscreen();
-  } else if (el.requestFullscreen) {
-    // real Fullscreen
-    enterFullscreen(el);
-  } else if (isIOS()) {
-    // fallback
-    simulateIOSFullscreen(el);
+const toggleImageFullscreen = () => {
+  const el = imgRef.current;
+  if (!el) return;
+
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+  if (document.fullscreenElement || el.classList.contains('ios-fullscreen')) {
+    // Exit fullscreen
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+
+    document.body.style.overflow = '';
+    el.classList.remove('img-fullscreen', 'ios-fullscreen');
+
+  } else {
+    if (el.requestFullscreen) {
+      el.requestFullscreen();
+    } else if (isIOS) {
+      el.classList.add('ios-fullscreen');
+    }
+
+    el.classList.add('img-fullscreen');
+    document.body.style.overflow = 'hidden';
   }
 };
   return (
-    <div style={{marginTop:'4.5%' , backgroundColor:'white'}}>
+    <div className='about-page'>
      
       <h1 style={{ display: 'none' }}>About Omar ElMishad</h1>
       
@@ -50,9 +65,8 @@ const toggleFS = (el) => {
         alt="Biography of Omar ElMishad, creative director and founder"
         loading="lazy"
         style={{ width: '100%', objectFit: 'contain', paddingTop: '6.5%', backgroundColor: 'black' , cursor: 'pointer'}}
-        // onPointerUp={() => toggleFS(imgRef.current)}
-        onClick={() => toggleFS(imgRef.current)}   /* in case pointer events are disabled */
-        onTouchEnd={() => toggleFS(imgRef.current)}
+        onPointerUp={toggleImageFullscreen}
+       
       />
 
       <FooterPage2/>

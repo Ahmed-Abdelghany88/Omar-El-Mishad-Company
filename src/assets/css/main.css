@@ -230,6 +230,7 @@ h6 {
   padding: 10px 0;
   transition: all 0.5s;
   z-index: 997;
+  height: 80px;
 }
 
 .header .logo {
@@ -268,6 +269,9 @@ h6 {
 }
 
 @media (max-width: 1200px) {
+  .header{
+    height: 80px;
+  }
   .header .logo {
     order: 1;
   }
@@ -288,6 +292,9 @@ h6 {
 }
 
 @media (max-width: 768px) {
+    .header{
+    height: 50px;
+  }
   .header .logo {
     order: 1;
   }
@@ -366,10 +373,10 @@ h6 {
   position: relative;
 }
 
-.navmenu a:hover,
+/* .navmenu a:hover,
 .navmenu .active {
   color: var(--nav-hover-color, #f0a500);
-}
+} */
 
 .navmenu a::before {
   content: "";
@@ -401,7 +408,7 @@ h6 {
   z-index: 1001;
   
   position: absolute;
-  top: 1px;
+  top: 12px;
   right: 20px;
 }
 .mobile-nav-menu a {
@@ -418,13 +425,13 @@ h6 {
 }
 @media (min-width:300px) and (max-width:450px){
 .navmenu li {
-  padding: 2px 0;
+  padding: 4px 0;
 }
 }
 
 @media (min-width:470px) and (max-width:750px){
 .navmenu li {
-  padding: 3px 0;
+  padding: 4px 0;
 }
 }
 /* Hover underline (same as desktop) */
@@ -1410,7 +1417,7 @@ section,
   width: 100%;
   min-height: 100vh;
   position: relative;
-  margin: 4.5% 0;
+  margin: 80px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1564,7 +1571,9 @@ section,
 }
 
 @media (min-width: 500px) and (max-width:700px){
-
+ .hero{
+    margin: 50px 0;
+  }
   .hero img {
   opacity: 0.5;
   position: absolute;
@@ -1609,6 +1618,9 @@ section,
 
 
 @media  (min-width: 300px) and (max-width:450px){
+  .hero{
+    margin: 40px 0;
+  }
   .hero .uppercontainer {
   width: 70%;
   margin-bottom: 15%;
@@ -2041,6 +2053,27 @@ body.no-scroll {
   align-items: center;
 }
 
+.img-fullscreen {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  background-color: black;
+  z-index: 9999;
+}
+.ios-fullscreen .img-fullscreen {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  background-color: black;
+  z-index: 9999;
+}
+
 /*--------------------------------------------------------------
 # Team Section
 --------------------------------------------------------------*/
@@ -2115,7 +2148,11 @@ body.no-scroll {
 /* ------------------------------------------------------------------------------*/
 /* portofolio
 /* ------------------------------------------------------------------------------*/
-
+.portfolio-sction{
+  width: 100%;
+  background-color: white;
+  margin-top: 80px;
+}
 /* Default style override of slider arrows*/
 .portfolio-swiper-container .swiper-button-prev,
 .portfolio-swiper-container .swiper-button-next {
@@ -2151,6 +2188,9 @@ color: white;
 
 /* Medium screens */
 @media (max-width: 768px) {
+  .portfolio-sction{
+  margin-top: 50px;
+}
    .portfolio-swiper-container .swiper-button-prev,
   .portfolio-swiper-container .swiper-button-next {
     width: 28px;
@@ -2193,7 +2233,9 @@ color: white;
 
 /* Small screens */
 @media (max-width: 480px) {
-  
+    .portfolio-sction{
+  margin-top: 50px;
+}
  .portfolio-swiper-container .overlay-links{
   position: absolute;
   right: 4%;
@@ -2252,3 +2294,17 @@ margin: 5% 0;
   align-items: center;
 }
   
+
+/* ------------------------------------------------------------------------------*/
+/* About page
+/* ------------------------------------------------------------------------------*/
+.about-page{
+  width: 100%;
+  background-color: white;
+  margin-top: 80px;
+}
+
+@media (max-width: 768px) {
+  .about-page{
+  margin-top: 50px;
+}}

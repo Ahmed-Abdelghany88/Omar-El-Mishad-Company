@@ -16,6 +16,23 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
+
+
+const handleNavClick = (e, targetId) => {
+  e.preventDefault();
+
+  if (location.pathname === '/') {
+    const section = document.getElementById(targetId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  } else {
+    navigate(`/?scrollTo=${targetId}`);
+  }
+
+  setIsOpen(false); // ✅ Close mobile menu after click
+};
+
   return (
     <header id="header" className="header d-flex align-items-center fixed-top">
       <div className="container-fluid container-xl d-flex align-items-center justify-content-between">
@@ -43,11 +60,11 @@ const Navbar = () => {
             <li>
               <a href='#' onClick={handleHomeClick} style={{ cursor: "pointer" }}>Home</a>
             </li>
-            <li><a href="/#about" onClick={() => setIsOpen(false)}>Know Us</a></li>
+            <li><a href="/#about" onClick={(e) => handleNavClick(e, 'about')}>Know Us</a></li>
             <li><Link to="/portfolio" onClick={() => setIsOpen(false)}>Portfolio</Link></li>
-            <li><a href="/#team" onClick={() => setIsOpen(false)}>Team</a></li>
+            <li><a href="/#team" onClick={(e) => handleNavClick(e, 'team')}>Team</a></li>
             <li><Link to="/about" onClick={() => setIsOpen(false)}>About</Link></li>
-            <li><a href="#footer" onClick={() => setIsOpen(false)}>Contacts</a></li>
+            <li><a href="/#footer" onClick={(e) => handleNavClick(e, 'footer')}>Contact</a></li>
           </ul>
         </nav>
       </div>

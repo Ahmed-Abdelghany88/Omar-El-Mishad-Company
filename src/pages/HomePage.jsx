@@ -1,4 +1,5 @@
 import React,{ useRef , useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom';
 import FooterPage from './footerPage.jsx';
 import coverImg from "../assets/img/hero-bg.jpeg";
 import coverlogo from "../assets/img/logo.png";
@@ -11,6 +12,7 @@ import teammember3 from "../assets/img/team-3.jpg";
 import teammember2 from "../assets/img/team-2.jpg";
 import teammember1 from "../assets/img/team-1.jpg";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Helmet from '../components/helmet.jsx';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -24,22 +26,47 @@ import 'swiper/css/autoplay';
 
 
 const HomePage = () => {
+  const location = useLocation();
 
-  const toggleImageFullscreen = () => {
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const scrollTo = params.get('scrollTo');
+
+    if (scrollTo) {
+      const targetEl = document.getElementById(scrollTo);
+      if (targetEl) {
+        setTimeout(() => {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }, 300); // Delay to ensure rendering is done
+      }
+    }
+  }, [location.search]);
+
+/* this section for fullscreen mode */
+const toggleImageFullscreen = () => {
   const el = imgRef.current;
-  const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-
   if (!el) return;
 
-  if (document.fullscreenElement) {
-    document.exitFullscreen();
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+  if (document.fullscreenElement || el.classList.contains('ios-fullscreen')) {
+    // Exit fullscreen
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+
     document.body.style.overflow = '';
-  } else if (el.requestFullscreen) {
-    el.requestFullscreen();
-  } else if (iOS) {
-    el.classList.toggle('ios-simulated-fullscreen');
-    const isFS = el.classList.contains('ios-simulated-fullscreen');
-    document.body.style.overflow = isFS ? 'hidden' : '';
+    el.classList.remove('img-fullscreen', 'ios-fullscreen');
+
+  } else {
+    if (el.requestFullscreen) {
+      el.requestFullscreen();
+    } else if (isIOS) {
+      el.classList.add('ios-fullscreen');
+    }
+
+    el.classList.add('img-fullscreen');
+    document.body.style.overflow = 'hidden';
   }
 };
 
@@ -112,7 +139,7 @@ const imgRef = useRef(null);
 
   return (
     <div>
-
+        <Helmet/>
      {/* Hero Section */}
 <section id="hero" className="hero section dark-background">
   <img src={coverImg} alt='Hero background showing Omar El-Mishad branding'/>
@@ -152,11 +179,12 @@ powered video production.</li>
       <div className="sub-container2">
           <div className="container2-video">
             <div style={{padding:'56.25% 0 0 0',position:'relative',width:'100%',height:'100%'}}><iframe
-  src="https://player.vimeo.com/video/1076189894?h=e1c282d7d6&title=0"
+  src="https://www.youtube.com/embed/Hy0QL1F5L5w?si=0qg8j-AS2wmh94-T"
+  title="YouTube video player" frameborder="0"
   style={{position:'absolute',top:'0',left:'0',width:'100%',height:'100%'}}
-  frameBorder="0"
-  allow="autoplay; fullscreen; picture-in-picture"
-  allowFullScreen title='about section video'
+
+  allow="autoplay;accelerometer; fullscreen; picture-in-picture"
+  allowFullScreen 
 ></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 
           </div>

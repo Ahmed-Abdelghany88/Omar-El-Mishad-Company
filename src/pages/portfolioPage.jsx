@@ -14,75 +14,71 @@ import 'swiper/css/pagination';
 
 const PortfolioPage = () => {
   const swiperContainerRef = useRef(null);
-  const swiperRef = useRef(null);
-  const [isFullscreen, setIsFullscreen] = useState(false);
-
-  const updateAutoplay = (swiper, fullscreen) => {
-  if (fullscreen) {
-    swiper?.autoplay?.stop();
-  } else {
-    swiper?.autoplay?.start();
-  }
-};
-const enterFullscreen = () => {
-  const el = swiperContainerRef.current;
-  const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-  const swiper = swiperRef.current?.swiper;
-
-  if (!document.fullscreenElement && el) {
-    if (el.requestFullscreen) {
-      el.requestFullscreen();
-    } else if (el.webkitRequestFullscreen) {
-      el.webkitRequestFullscreen();
-    } else if (el.msRequestFullscreen) {
-      el.msRequestFullscreen();
-    } else if (iOS) {
-      el.classList.add('ios-simulated-fullscreen');
-      document.body.style.overflow = 'hidden';
-      setIsFullscreen(true);
-      updateAutoplay(swiper, true);
-    }
-  }
-};
-
+    const swiperRef = useRef(null);
+ 
+    const [isFullscreen, setIsFullscreen] = useState(false);
   
-const exitFullscreen = () => {
-  const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-  const swiper = swiperRef.current?.swiper;
-
-  if (document.fullscreenElement) {
-    document.exitFullscreen();
-  } else if (iOS) {
-    document.body.style.overflow = '';
-    swiperContainerRef.current?.classList.remove('ios-simulated-fullscreen');
-    setIsFullscreen(false);
-    updateAutoplay(swiper, false);
-  }
-};
-
-const handleSwiperPointerUp = () => {
-  if (!document.fullscreenElement && !isFullscreen) {
-    enterFullscreen();
-  } else {
-    exitFullscreen();
-  }
-};
-
-useEffect(() => {
-  const swiper = swiperRef.current?.swiper;
-  swiper?.autoplay?.start(); // Start autoplay right away
-
-  const onFullscreenChange = () => {
-    const isFS = !!document.fullscreenElement;
-    setIsFullscreen(isFS);
-    updateAutoplay(swiper, isFS);
-  };
-
-  document.addEventListener('fullscreenchange', onFullscreenChange);
-  return () => {
-    document.removeEventListener('fullscreenchange', onFullscreenChange);
-  };
-}, []);
+    const isIOS = () => /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  
+    const enterFullscreen = () => {
+      const el = swiperContainerRef.current;
+      const swiper = swiperRef.current?.swiper;
+  
+      if (!document.fullscreenElement && el) {
+        if (el.requestFullscreen) {
+          el.requestFullscreen();
+        } else if (el.webkitRequestFullscreen) {
+          el.webkitRequestFullscreen();
+        } else if (el.msRequestFullscreen) {
+          el.msRequestFullscreen();
+        } else if (isIOS()) {
+          el.classList.add('ios-simulated-fullscreen');
+          document.body.style.overflow = 'hidden';
+          setIsFullscreen(true);
+          swiper?.autoplay?.stop();
+        }
+      }
+    };
+  
+    const exitFullscreen = () => {
+      const swiper = swiperRef.current?.swiper;
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else if (isIOS()) {
+        document.body.style.overflow = '';
+        swiperContainerRef.current?.classList.remove('ios-simulated-fullscreen');
+        setIsFullscreen(false);
+        swiper?.autoplay?.start();
+      }
+    };
+  
+    const handleSwiperPointerUp = () => {
+      if (!document.fullscreenElement && !isFullscreen) {
+        enterFullscreen();
+      } else {
+        exitFullscreen();
+      }
+    };
+  
+    useEffect(() => {
+      const swiper = swiperRef.current?.swiper;
+      swiper?.autoplay?.start();
+  
+      const onFullscreenChange = () => {
+        const isFS = !!document.fullscreenElement;
+        setIsFullscreen(isFS);
+        if (isFS) {
+          swiper?.autoplay?.stop();
+        } else {
+          swiper?.autoplay?.start();
+        }
+      };
+  
+      document.addEventListener('fullscreenchange', onFullscreenChange);
+      return () => {
+        document.removeEventListener('fullscreenchange', onFullscreenChange);
+      };
+    }, []);
   
 
 
@@ -99,7 +95,7 @@ useEffect(() => {
   );
 
   return (
-    <div className='portfolio-sction' style={{ width: '100%', backgroundColor: 'white', paddingTop: '5%' }}>
+    <div className='portfolio-sction' >
       <div className="portfolio-swiper-container" ref={swiperContainerRef} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Swiper
           ref={swiperRef}
