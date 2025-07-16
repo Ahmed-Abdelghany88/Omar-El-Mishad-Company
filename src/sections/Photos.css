@@ -1,0 +1,39 @@
+
+/*--------------------------------------------------------------
+# Photos Section
+--------------------------------------------------------------*/
+
+@media (min-width: 720px) and (max-width:1024px){
+.title-photosection{
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  font-size: 20px;
+}
+}
+@media (max-width:700px){
+.title-photosection{
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  font-size: 16px;
+}
+}
+
+@media (max-width:450px){
+.title-photosection{
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  font-size: 11px;
+}
+}
+.photos-container {
+position: relative;
+display: flex;
+align-items: center;
+flex-direction: column;
+width: 100%;
+}
+ .title-photosection{
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+}
+.photos .img-ser-all{
+  object-fit: contain;
+   width: 90%;
+   margin-top: 10px;
+}

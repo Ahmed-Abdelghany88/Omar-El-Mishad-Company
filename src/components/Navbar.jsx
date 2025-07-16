@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import omarlogo from "../assets/img/omarlogo.png";
-
+import '../components/Navbar.css';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
@@ -64,7 +64,7 @@ const handleNavClick = (e, targetId) => {
             <li><Link to="/portfolio" onClick={() => setIsOpen(false)}>Portfolio</Link></li>
             <li><a href="/#team" onClick={(e) => handleNavClick(e, 'team')}>Team</a></li>
             <li><Link to="/about" onClick={() => setIsOpen(false)}>About</Link></li>
-            <li><a href="/#footer" onClick={(e) => handleNavClick(e, 'footer')}>Contact</a></li>
+            <li><a href="/#footer" onClick={(e) => handleNavClick(e, 'footer')}>Contacts</a></li>
           </ul>
         </nav>
       </div>

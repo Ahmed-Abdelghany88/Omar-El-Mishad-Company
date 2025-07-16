@@ -1,0 +1,260 @@
+
+/*--------------------------------------------------------------
+# Swiper Section
+--------------------------------------------------------------*/
+.swiper-section {
+  position: relative;
+  width: 90%;
+  height: fit-content;
+  margin-left: 5%;
+}
+
+.swiper-section .fullscreen-swiper-container .swiper-img1{
+  width: 100%;
+  aspect-ratio: 16/9;
+  height: auto;
+  
+}
+.swiper-section .fullscreen-swiper-container .swiper-img2{
+  width: 100%;
+aspect-ratio: 16/9;
+height: auto;
+}
+.swiper-section .fullscreen-swiper-container .swiper-img3{
+  width: 100%;
+aspect-ratio: 16/9;
+height: auto;}
+.fullscreen-swiper-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.exit-fullscreen-btn {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 10px 20px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+/* Default style override of slider arrows*/
+.swiper-section .fullscreen-swiper-container .swiper-button-prev::after,
+.swiper-section .fullscreen-swiper-container .swiper-button-next::after {
+  font-size: 24px; /* Default size */
+}
+
+/* Medium screens */
+@media (max-width: 768px) {
+  .swiper-section .fullscreen-swiper-container .swiper-button-prev::after,
+.swiper-section .fullscreen-swiper-container .swiper-button-next::after  {
+    font-size: 10px;
+  }
+.swiper-section .fullscreen-swiper-container .swiper-button-prev,
+.swiper-section .fullscreen-swiper-container .swiper-button-next {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+  .exit-fullscreen-btn {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 10px 20px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  border: none;
+  border-radius: 2px;
+  font-size: 10px;
+  cursor: pointer;
+}
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+  .swiper-section .fullscreen-swiper-container .swiper-button-prev::after,
+.swiper-section .fullscreen-swiper-container .swiper-button-next::after  {
+    font-size: 10px;
+  }
+  .swiper-section .fullscreen-swiper-container .swiper-button-prev,
+.swiper-section .fullscreen-swiper-container .swiper-button-next {
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+}
+  .exit-fullscreen-btn {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 10px 20px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  border: none;
+  border-radius: 2px;
+  font-size: 8px;
+  cursor: pointer;
+}
+}
+
+.swiper-section .fullscreen-swiper-container .swiper-button-prev,
+.swiper-section .fullscreen-swiper-container .swiper-button-next {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+  
+/* Default size of slider dots*/
+.swiper-section .fullscreen-swiper-container .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #999; /* Customize as needed */
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.swiper-section .fullscreen-swiper-container .swiper-pagination-bullet-active {
+  background: var(--accent-color); /* Highlight active dot */
+  opacity: 1;
+}
+
+/* Medium screens */
+@media (max-width: 768px) {
+  .swiper-section .fullscreen-swiper-container .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+  .swiper-section .fullscreen-swiper-container .swiper-pagination-bullet {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+/* portfolio.css */
+.ios-fullscreen {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: #000;
+  z-index: 9999;
+  object-fit: contain;
+}
+
+/* prevent body scroll while simulated FS is active */
+body.no-scroll {
+  overflow: hidden;
+}
+/* ---------- 1. True browser‑fullscreen (Android Chrome, Desktop, iOS 16+) ---------- */
+:fullscreen .swiper-slide,
+:-webkit-full-screen .swiper-slide {        /* Safari prefix */
+  display: flex;                 /* centers child */
+  justify-content: center;
+  align-items: center;
+  background: #000;
+}
+
+/* Make the slide’s image fit but keep native pinch‑zoom */
+:fullscreen .swiper-slide img,
+:-webkit-full-screen .swiper-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  touch-action: pinch-zoom;      /* allow pinch‑zoom */
+  -webkit-user-drag: none;       /* stops ghost image on iOS */
+}
+
+/* ---------- 2. iOS fallback class (.ios-fullscreen) ---------- */
+.ios-fullscreen {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9999;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ios-fullscreen img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  touch-action: pinch-zoom;
+}
+
+/* ---------- 3. Optional: hide Swiper arrows / dots when zoomed way in ---------- */
+@media (max-width: 768px) {
+  :fullscreen .swiper-button-next,
+  :fullscreen .swiper-button-prev,
+  .ios-fullscreen .swiper-button-next,
+  .ios-fullscreen .swiper-button-prev {
+    width: 28px;
+    height: 28px;
+  }
+
+  :fullscreen .swiper-pagination-bullet,
+  .ios-fullscreen .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+  .ios-simulated-fullscreen {
+  position: fixed !important;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ios-fullscreen {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: #000;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-fullscreen {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  background-color: black;
+  z-index: 9999;
+}
+.ios-fullscreen .img-fullscreen {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  background-color: black;
+  z-index: 9999;
+}

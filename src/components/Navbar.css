@@ -1,0 +1,271 @@
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+.header {
+  --background-color: rgba(0, 0, 0,0.5);
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 10px 0;
+  transition: all 0.5s;
+  z-index: 997;
+  height: 80px;
+}
+
+.header .logo {
+  line-height: 1;
+}
+
+.header .logo img {
+  max-height: 40px;
+  margin-right: 20px;
+}
+
+.header .logo h1 {
+  font-size: 30px;
+  margin: 0;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.header .cta-btn,
+.header .cta-btn:focus {
+  color: var(--contrast-color);
+  font-size: 13px;
+  padding: 7px 25px;
+  margin: 0 0 0 30px;
+  border-radius: 4px;
+  transition: 0.3s;
+  text-transform: uppercase;
+  border: 2px solid var(--contrast-color);
+}
+
+.header .cta-btn:hover,
+.header .cta-btn:focus:hover {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+@media (max-width: 1200px) {
+  .header{
+    height: 80px;
+  }
+  .header .logo {
+    order: 1;
+  }
+.header .logo img {
+  max-height: 30px;
+  margin-right: 20px;
+}
+  .header .cta-btn {
+    order: 2;
+    margin: 0 15px 0 0;
+    padding: 6px 15px;
+  }
+
+  .header .navmenu {
+    order: 3;
+    width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+    .header{
+    height: 50px;
+  }
+  .header .logo {
+    order: 1;
+  }
+.header .logo img {
+  max-height: 25px;
+  margin-right: 20px;
+}
+
+  .header .cta-btn {
+    order: 2;
+    margin: 0 10px 0 0;
+    padding: 6px 10px;
+  }
+
+  .header .navmenu {
+    order: 3;
+    width: auto;
+  }
+}
+
+.scrolled .header {
+  box-shadow: 0px 0 18px rgba(0, 0, 0, 0.3);
+}
+
+/* Global Header on Scroll
+------------------------------*/
+.scrolled .header {
+  --background-color: rgba(21, 34, 43, 0.85);
+}
+
+/* Import Bootstrap Icons for hamburger and close icons */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css");
+
+/*--------------------------------------------------------------
+# Navigation Menu Base Styles
+--------------------------------------------------------------*/
+
+.navmenu {
+  display: none;
+  flex-direction: column;
+  align-items: flex-end; /* right align */
+  background-color: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  top: 100%;
+  right: 0; /* align right under icon */
+  width: 250px;
+  padding: 1rem;
+  z-index: 999;
+  border-radius: 0 0 0 8px;
+}
+
+.navmenu-visible {
+  display: flex;
+}
+
+.navmenu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* right-align text */
+}
+
+.navmenu li {
+  padding: 10px 0;
+}
+
+.navmenu a {
+  color: var(--nav-color, #fff);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;
+  position: relative;
+}
+
+/* .navmenu a:hover,
+.navmenu .active {
+  color: var(--nav-hover-color, #f0a500);
+} */
+
+.navmenu a::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  bottom: -6px;
+  left: 0;
+  background-color: var(--nav-hover-color, #f0a500);
+  width: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.navmenu a:hover::before,
+.navmenu .active::before {
+  visibility: visible;
+  width: 100%;
+}
+
+/*--------------------------------------------------------------
+# Mobile Toggle Button
+--------------------------------------------------------------*/
+.mobile-nav-toggle {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: var(--nav-color, #fff);
+  cursor: pointer;
+  z-index: 1001;
+  
+  position: absolute;
+  top: 12px;
+  right: 20px;
+}
+.mobile-nav-menu a {
+  padding: 10px 16px;
+  display: block;
+  width: 100%;
+  color: var(--nav-color, #000);
+  text-decoration: none;
+  font-size: 12px;
+  font-family: var(--nav-font);
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s;
+}
+@media (min-width:300px) and (max-width:450px){
+.navmenu li {
+  padding: 4px 0;
+}
+}
+
+@media (min-width:470px) and (max-width:750px){
+.navmenu li {
+  padding: 4px 0;
+}
+}
+/* Hover underline (same as desktop) */
+.mobile-nav-menu a::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  bottom: 4px;
+  left: 0;
+  background-color: var(--nav-hover-color, #007bff);
+  visibility: hidden;
+  width: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.mobile-nav-menu a:hover::before,
+.mobile-nav-menu a:focus::before {
+  visibility: visible;
+  width: 100%;
+}
+
+.mobile-nav-menu a:hover,
+.mobile-nav-menu a:focus {
+  color: color-mix(in srgb, var(--nav-color) 90%, white 15%);
+}
+/*--------------------------------------------------------------
+# Desktop Styles
+--------------------------------------------------------------*/
+@media (min-width: 992px) {
+  .navmenu {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    background: none;
+    padding: 0;
+    width: auto;
+    align-items: center;
+  }
+
+  .navmenu ul {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .navmenu li {
+    padding: 0;
+  }
+
+  .mobile-nav-toggle {
+    display: none;
+  }
+
+  .navmenu a {
+    font-size: 15px;
+    padding: 10px 14px;
+  }
+}

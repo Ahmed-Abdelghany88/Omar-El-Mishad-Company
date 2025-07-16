@@ -1,0 +1,116 @@
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+
+
+.about-section{
+  width: 100%;
+} 
+.about-section .videocontainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  margin-left: 5%;
+  height: fit-content;
+}
+.about-section .sub-container1{
+width: 37%;
+display: flex;
+flex-direction: row;
+}
+.about-section .sub-container2{
+position: relative;
+width: 60%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.about-section .container2-video{
+  width: 100%;
+}
+
+.about-section .sub-container1 .col-lg-6-r{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.about-section .sub-container1 .col-lg-6-r .Gettoknowus-title{
+color:'#42607c';
+position: relative; 
+left: 10px;
+}
+
+
+.about-section .sub-container2 .img-fluid2{
+  aspect-ratio: 16/9;
+  width: 100%;
+}
+
+.about-section .sub-container1 .img-fluid1{
+  aspect-ratio: 9/16;
+  object-fit: contain;
+  height: 100%;
+}
+
+
+.about-section .fst-italic {
+  color: color-mix(in srgb, var(--default-color), var(--contrast-color) 50%);
+}
+
+.about-section .col-lg-6 ul {
+  list-style: inside;
+  padding: 0;
+  order: 2;
+  width: 100%;
+  position: relative;
+  margin-top: 5px;
+
+}
+
+.about-section .col-lg-6 ul li {
+  padding: 0 0 0px 30px;
+  position: relative;
+}
+
+.about-section .content ul i {
+  position: absolute;
+  font-size: 20px;
+  left: 0;
+  top: -3px;
+  color: var(--accent-color);
+}
+
+.about-section .content p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1024px) {
+
+.about-section .videocontainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin-left: 5%;
+  height: fit-content;
+}
+.about-section .sub-container1{
+width: 100%;
+display: flex;
+flex-direction: row;
+}
+.about-section .sub-container2{
+position: relative;
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-top: 1%;
+}
+}
