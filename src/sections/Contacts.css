@@ -1,0 +1,633 @@
+/*--------------------------------------------------------------
+# Contacts
+--------------------------------------------------------------*/
+/* phones view */
+@media (min-width:300px) and (max-width:450px){
+  .footer {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-size: 12px;
+  position: relative;
+}
+
+.footer .footer-top {
+  padding-top: 40px;
+  align-items: center;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+   display: flex;
+  width: 95%;
+ align-items: center;
+}
+
+.footer .row-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-around;
+  padding-bottom: 3%;
+  margin-left:3%;
+  
+}
+.footer-contact{
+  align-self: center;
+  width: fit-content;
+  margin-left: 40%;
+}
+
+.footer .footer-img {
+  position: relative;
+object-fit:contain;
+  width: 20%;
+  right:5px;
+  bottom: 15px;
+}
+
+.footer .footer-about .logo span {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+}
+
+.footer .footer-about p {
+  font-size: 10px;
+  font-family: var(--heading-font);
+}
+
+.footer .social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
+  font-size: 12px;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  margin-right: 10px;
+}
+
+.footer .social-links a:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+.footer .emails{
+  display: flex;
+}
+
+.footer .job-emails{
+  white-space: nowrap;  
+  width: fit-content;
+}
+.footer h4 {
+  font-size: 12px;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer .footer-contact {
+  padding-left: 7%;
+  margin: 15px 5px;
+width: fit-content;
+order:4;}
+
+.footer .useful-links {
+  margin: 15px 5px;
+width: fit-content;}
+
+.footer .useful-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .useful-links ul i {
+  padding-right: 3px;
+  font-size: 10px;
+  line-height: 0;
+  color: var(--accent-color);
+}
+
+.footer .useful-links ul li {
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer .useful-links ul li:first-child {
+  padding-top: 0;
+}
+
+.footer .useful-links ul a {
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  display: inline-block;
+  line-height: 1;
+}
+
+.footer .useful-links ul a:hover {
+  color: var(--accent-color);
+}
+.footer .our-services {
+  margin: 15px 5px;
+width: fit-content;}
+
+.footer .our-services ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .our-services ul i {
+  padding-right: 3px;
+  font-size: 10px;
+  line-height: 0;
+  color: var(--accent-color);
+}
+
+.footer .our-services ul li {
+  padding: 3px 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer .our-services ul li:first-child {
+  padding-top: 0;
+}
+
+.footer .our-services ul a {
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  display: inline-block;
+  line-height: 1;
+}
+
+.footer .our-services ul a:hover {
+  color: var(--accent-color);
+}
+.footer .team-mails {
+  padding-left: 5%;
+  margin: 15px 5px;
+width: fit-content;}
+
+.footer .team-mails ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .team-mails ul i {
+  padding-right: 3px;
+  font-size: 10px;
+  line-height: 0;
+  color: var(--accent-color);
+}
+
+.footer .team-mails ul li {
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer .team-mails ul li:first-child {
+  padding-top: 0;
+}
+
+.footer .team-mails ul a {
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  display: inline-block;
+  line-height: 1;
+}
+
+.footer .team-mails ul a:hover {
+  color: var(--accent-color);
+}
+
+.footer .footer-contact p{
+  margin-bottom: 5px;
+}
+
+}
+
+
+@media (min-width:460px) and (max-width: 768px) {
+   .footer {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-size: 14px;
+  position: relative;
+}
+
+
+.footer .footer-top {
+  padding-top: 40px;
+  align-items: center;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    display: flex;
+  width: 95%;
+ align-items: center;
+}
+
+.footer .row-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-around;
+  padding-bottom: 3%;
+  margin-left:3%;
+  
+}
+.footer-contact{
+  align-self: center;
+  width: fit-content;
+  margin-left: 40%;
+}
+
+.footer .footer-img {
+  position: relative;
+object-fit:contain;
+  width: 20%;
+  right:5px;
+  bottom: 15px;
+}
+
+.footer .footer-about .logo span {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+}
+
+.footer .footer-about p {
+  font-size: 10px;
+  font-family: var(--heading-font);
+}
+
+.footer .social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
+  font-size: 12px;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  margin-right: 10px;
+}
+
+.footer .social-links a:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+.footer .emails{
+  display: flex;
+}
+
+.footer .job-emails{
+  white-space: nowrap;  
+  width: fit-content;
+}
+.footer h4 {
+  font-size: 12px;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer .footer-contact {
+  padding-left: 13%;
+  margin: 20px 5px;
+width: fit-content;
+order:4;}
+
+.footer .useful-links {
+  margin: 15px 5px;
+width: fit-content;}
+
+.footer .useful-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .useful-links ul i {
+  padding-right: 3px;
+  font-size: 10px;
+  line-height: 0;
+  color: var(--accent-color);
+}
+
+.footer .useful-links ul li {
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer .useful-links ul li:first-child {
+  padding-top: 0;
+}
+
+.footer .useful-links ul a {
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  display: inline-block;
+  line-height: 1;
+}
+
+.footer .useful-links ul a:hover {
+  color: var(--accent-color);
+}
+.footer .our-services {
+  margin: 15px 5px;
+width: fit-content;}
+
+.footer .our-services ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .our-services ul i {
+  padding-right: 3px;
+  font-size: 10px;
+  line-height: 0;
+  color: var(--accent-color);
+}
+
+.footer .our-services ul li {
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer .our-services ul li:first-child {
+  padding-top: 0;
+}
+
+.footer .our-services ul a {
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  display: inline-block;
+  line-height: 1;
+}
+
+.footer .our-services ul a:hover {
+  color: var(--accent-color);
+}
+.footer .team-mails {
+  padding-right: 10%;
+  margin: 15px 5px;
+width: fit-content;}
+
+.footer .team-mails ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .team-mails ul i {
+  padding-right: 3px;
+  font-size: 10px;
+  line-height: 0;
+  color: var(--accent-color);
+}
+
+.footer .team-mails ul li {
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer .team-mails ul li:first-child {
+  padding-top: 0;
+}
+
+.footer .team-mails ul a {
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  display: inline-block;
+  line-height: 1;
+}
+
+.footer .team-mails ul a:hover {
+  color: var(--accent-color);
+}
+
+.footer .footer-contact p{
+  margin-bottom: 5px;
+}
+
+
+
+}
+
+
+/* Desktop view */
+@media (min-width: 1200px){
+.footer {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-size: 14px;
+  position: relative;
+}
+
+.footer .footer-top {
+  padding-top: 40px;
+  align-items: center;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+   display: flex;
+  width: 95%;
+ align-items: center;
+}
+
+.footer .row-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  align-items: start;
+  justify-content: space-evenly;
+  padding-bottom: 3%;
+  margin-left:3%;
+  
+}
+
+.footer .footer-img {
+  position: relative;
+object-fit:contain;
+  width: 40%;
+  right:5px;
+  bottom: 15px;
+}
+
+
+.footer .footer-about .logo span {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+}
+
+.footer .footer-about p {
+  font-size: 10px;
+  font-family: var(--heading-font);
+}
+
+.footer .social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
+  font-size: 12px;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  margin-right: 10px;
+}
+
+.footer .social-links a:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+.footer .emails{
+  display: flex;
+}
+
+.footer .job-emails{
+  white-space: nowrap;  
+  width: fit-content;
+}
+.footer h4 {
+  font-size: 12px;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer .footer-contact {
+  margin: 20px 5px;
+width: fit-content;
+}
+
+.footer .useful-links {
+  margin: 15px 5px;
+width: 20%;}
+
+.footer .useful-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .useful-links ul i {
+  padding-right: 3px;
+  font-size: 10px;
+  line-height: 0;
+  color: var(--accent-color);
+}
+
+.footer .useful-links ul li {
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer .useful-links ul li:first-child {
+  padding-top: 0;
+}
+
+.footer .useful-links ul a {
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  display: inline-block;
+  line-height: 1;
+}
+
+.footer .useful-links ul a:hover {
+  color: var(--accent-color);
+}
+.footer .our-services {
+  margin: 15px 5px;
+width: 20%;}
+
+.footer .our-services ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .our-services ul i {
+  padding-right: 3px;
+  font-size: 10px;
+  line-height: 0;
+  color: var(--accent-color);
+}
+
+.footer .our-services ul li {
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer .our-services ul li:first-child {
+  padding-top: 0;
+}
+
+.footer .our-services ul a {
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  display: inline-block;
+  line-height: 1;
+}
+
+.footer .our-services ul a:hover {
+  color: var(--accent-color);
+}
+.footer .team-mails {
+  /* padding-right: 10%; */
+  margin: 15px 5px;
+width: fit-content;}
+
+.footer .team-mails ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .team-mails ul i {
+  padding-right: 3px;
+  font-size: 10px;
+  line-height: 0;
+  color: var(--accent-color);
+}
+
+.footer .team-mails ul li {
+  padding: 7px 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer .team-mails ul li:first-child {
+  padding-top: 0;
+}
+
+.footer .team-mails ul a {
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  display: inline-block;
+  line-height: 1;
+}
+
+.footer .team-mails ul a:hover {
+  color: var(--accent-color);
+}
+
+.footer .footer-contact p{
+  margin-bottom: 5px;
+}
+
+
+
+}

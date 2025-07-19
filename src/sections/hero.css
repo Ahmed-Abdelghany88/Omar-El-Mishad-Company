@@ -120,7 +120,9 @@
 /* Tablets  */
 
 @media (min-width: 720px) and (max-width:1050px){
-
+ .hero{
+    margin: 40px 0;
+  }
   .hero img {
   opacity: 0.5;
   position: absolute;
@@ -167,7 +169,7 @@
 
 @media (min-width: 500px) and (max-width:700px){
  .hero{
-    margin: 50px 0;
+    margin: 40px 0;
   }
   .hero img {
   opacity: 0.5;

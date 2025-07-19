@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import footericon from '../assets/img/footericon.png';
-import '../assets/css/main.css';
+import '../sections/Contacts.css';
 
-
-const Footer = () => {
+const Contacts = () => {
   const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
@@ -78,4 +77,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Contacts;

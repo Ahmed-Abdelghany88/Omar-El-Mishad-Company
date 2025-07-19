@@ -4,7 +4,7 @@ import About from '../sections/About.homepage.jsx';
 import Photos from '../sections/Photos.homepag.jsx';
 import SwiperSection from '../sections/Swiper.homepage.jsx';
 import Team from "../sections/Team.homepage.jsx";
-import FooterPage from './footerPage.jsx';
+import Contacts from '../sections/Contacts.homepage.jsx';
 
 const HomePage = () => {
   return (
@@ -15,7 +15,7 @@ const HomePage = () => {
         <Photos/>
         <SwiperSection/>
         <Team/>
-     <FooterPage />
+      <Contacts />
     </div>
   )
 }

@@ -48,7 +48,7 @@ color: white;
 /* Medium screens */
 @media (max-width: 768px) {
   .portfolio-sction{
-  margin-top: 50px;
+  margin-top: 40px;
 }
    .portfolio-swiper-container .swiper-button-prev,
   .portfolio-swiper-container .swiper-button-next {
@@ -93,7 +93,7 @@ color: white;
 /* Small screens */
 @media (max-width: 480px) {
     .portfolio-sction{
-  margin-top: 50px;
+  margin-top: 40px;
 }
  .portfolio-swiper-container .overlay-links{
   position: absolute;

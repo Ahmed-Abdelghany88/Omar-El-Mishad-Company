@@ -50,7 +50,7 @@
 
 @media (max-width: 1200px) {
   .header{
-    height: 80px;
+    height: 70px;
   }
   .header .logo {
     order: 1;
@@ -73,7 +73,7 @@
 
 @media (max-width: 768px) {
     .header{
-    height: 50px;
+    height: 40px;
   }
   .header .logo {
     order: 1;
