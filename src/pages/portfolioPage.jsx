@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import Footerpage2 from '../pages/footerpage2.jsx';
-
+import Footerpage2 from '../components/footerpage2.jsx';
+import '../pages/portfolio.css';
 import portfolio1 from '../assets/img/portfolio1.png';
 import portfolio2 from '../assets/img/portfolio2.png';
 import portfolio3 from '../assets/img/portfolio3.png';
@@ -113,7 +113,6 @@ const PortfolioPage = () => {
               alt="Portfolio 1"
               className="portfolio-slide"
               onPointerUp={handleSwiperPointerUp}
-              style={{ cursor: 'pointer', width: '100%', objectFit: 'contain' }}
             />
           </SwiperSlide>
 
@@ -123,7 +122,6 @@ const PortfolioPage = () => {
               alt="Portfolio 2"
               className="portfolio-slide"
               onPointerUp={handleSwiperPointerUp}
-              style={{ cursor: 'pointer', width: '100%', objectFit: 'contain' }}
             />
           </SwiperSlide>
 
@@ -133,7 +131,6 @@ const PortfolioPage = () => {
               alt="Portfolio 3"
               className="portfolio-slide"
               onPointerUp={handleSwiperPointerUp}
-              style={{ cursor: 'pointer', width: '100%', objectFit: 'contain' }}
             />
           </SwiperSlide>
 
@@ -144,7 +141,6 @@ const PortfolioPage = () => {
                 alt="Portfolio 4"
                 className="portfolio-slide"
                 onPointerUp={handleSwiperPointerUp}
-                style={{ cursor: 'pointer', width: '100%', objectFit: 'contain' }}
               />
               {overlayLinks}
             </div>

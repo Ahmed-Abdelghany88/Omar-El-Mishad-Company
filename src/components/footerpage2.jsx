@@ -1,11 +1,12 @@
 
 import footericon from '../assets/img/footericon.png';
+import '../components/footer.css';
 const Footer2 = () => {
 
   
   return (
     <footer id="footer2" className="footer2 dark-background">
-      <div className="container-foot2 footer-top">
+      <div className="container-foot2 footer-top2">
         <div className="row-footer2 gy-4">
 
           {/* Footer Contact */}

@@ -1,8 +1,8 @@
 import React,{useRef} from 'react';
 import biography from '../assets/img/Biography.png';
-import FooterPage2 from '../pages/footerpage2.jsx';
-
-const AboutPage = () => {
+import FooterPage2 from '../components/footerpage2.jsx';
+import '../pages/biography.css';
+const BiographyPage = () => {
 
   const enterFullscreen = async (el) => {
   try {
@@ -74,4 +74,4 @@ const toggleImageFullscreen = () => {
   );
 };
 
-export default AboutPage;
+export default BiographyPage;

@@ -6,7 +6,7 @@ import './assets/vendor/glightbox/css/glightbox.min.css';
 import './assets/vendor/swiper/swiper-bundle.min.css';
 import Navbar from './components/Navbar.jsx';
 import HomePage from './pages/HomePage.jsx';
-import AboutPage from './pages/AboutPage.jsx';
+import BiographyPage from './pages/BiographyPage.jsx';
 import PortfolioPage from './pages/portfolioPage.jsx';
 import { Route, Routes } from 'react-router';
 import { HelmetProvider } from 'react-helmet-async';
@@ -20,7 +20,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<HomePage />} />
-          <Route path='/about' element={<AboutPage />} />
+          <Route path='/about' element={<BiographyPage />} />
           <Route path='/portfolio' element={<PortfolioPage />} />
           <Route path='/terms' element={<TermsPage />} />
           <Route path='/privacy' element={<PrivacyPolicy />} />

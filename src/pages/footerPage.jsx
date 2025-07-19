@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import footericon from '../assets/img/footericon.png';
-const Footer = () => {
+import '../assets/css/main.css';
 
+
+const Footer = () => {
   const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
@@ -18,7 +20,7 @@ const Footer = () => {
   
   return (
     <footer id="footer" className="footer dark-background">
-      <div className="container-foot footer-top">
+      <div className="footer-top">
         <div className="row-footer gy-4">
 
           {/* Footer Contact */}
